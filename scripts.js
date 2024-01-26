@@ -2,6 +2,7 @@
 
 let PlayerSelection = prompt("Rock, Paper or Scissors?");
 
+
 // Get ComputerInput by random selection of "Rock", "Paper" or "Scissors"
 
 function getComputerSelection() {

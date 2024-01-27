@@ -1,18 +1,17 @@
 // Get user input
 
-function getPlayerChoice() {
+function getPlayerSelection() {
     const playerInput = prompt("Enter Rock, Paper, or Scissors:").toLowerCase(); 
 
     if (playerInput === "rock" || playerInput === "paper" || playerInput === "scissors") {
       return playerInput; 
     } else {
       alert("Invalid Input. Please try again."); 
-      return getPlayerChoice(); 
+      return getPlayerSelection(); 
     }
   }
   
-  const playerPick = getPlayerChoice();
-  console.log("Player chose: " + playerPick);
+  const playerSelection = getPlayerSelection();
   
   
 
@@ -31,7 +30,6 @@ function getComputerSelection() {
   }
       
   const ComputerSelection = getComputerSelection();
-  console.log("Computer chose: " + ComputerSelection);
       
 
 // Function that plays one round, return String like "You Lose! Paper beats Rock"
@@ -39,17 +37,29 @@ function getComputerSelection() {
 // Make PlayerInput case insensitive
 // Account for Ties, make Option to replay
 
-function playRound(PlayerSelection, ComputerSelection) {
-    // if player selection is rock and computer selection is rock = tie
-    // if player selection is paper and computer selection is paper = tie
-    // if player selection is scissors and computer selection is scissors = tie
-    // if player selection is rock and computer selection is paper = "You lose, Paper beats Rock"
-    // if player selection is rock and computer selection is scissors = "You win, Rock beats scissors"
-    // if player selection is paper and computer selection is scissors = "You lose, Scissors beat Paper"
-    // if player selection is paper and computer selection is rock = "You win, Paper beats Rock"
-    // if player selection is scissors and computer selection is rock = "You lose, Rock beats Scissors"
-    // if player selection is scissors and computer selection is paper = "You win, Scissors beats Paper"
-}
+function playRound(playerSelection, ComputerSelection) {
+    console.log("Player chose: " + playerSelection);
+    console.log("Computer chose: " + ComputerSelection);
+  
+    ComputerSelection = ComputerSelection.toLowerCase(); // Convert computer's choice to lowercase
+  
+    if (playerSelection === ComputerSelection) {
+      console.log("It's a tie!");
+    } else if (
+      (playerSelection === "rock" && ComputerSelection === "scissors") ||
+      (playerSelection === "paper" && ComputerSelection === "rock") ||
+      (playerSelection === "scissors" && ComputerSelection === "paper")
+    ) {
+      console.log("You win! " + playerSelection + " beats " + ComputerSelection);
+    } else {
+      console.log("You lose! " + ComputerSelection + " beats " + playerSelection);
+    }
+  }
+  
+ 
+
+playRound(playerSelection, ComputerSelection); // Play one round and display the result
+
 
 // Write a game() function that contains the playRound() function to play a best of 5 
 // Keep track of Scores

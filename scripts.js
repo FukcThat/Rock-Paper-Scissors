@@ -11,10 +11,8 @@ function getPlayerSelection() {
     }
   }
   
-  const playerSelection = getPlayerSelection();
   
   
-
 // Get ComputerInput by random selection of "Rock", "Paper" or "Scissors"
 
 function getComputerSelection() {
@@ -29,19 +27,14 @@ function getComputerSelection() {
     }
   }
       
-  const ComputerSelection = getComputerSelection();
-      
 
 // Function that plays one round, return String like "You Lose! Paper beats Rock"
-// Inputs are PlayerSelection and ComputerSelection
-// Make PlayerInput case insensitive
-// Account for Ties, make Option to replay
 
 function playRound(playerSelection, ComputerSelection) {
     console.log("Player chose: " + playerSelection);
     console.log("Computer chose: " + ComputerSelection);
   
-    ComputerSelection = ComputerSelection.toLowerCase(); // Convert computer's choice to lowercase
+    ComputerSelection = ComputerSelection.toLowerCase(); 
   
     if (playerSelection === ComputerSelection) {
       console.log("It's a tie!");
@@ -56,16 +49,32 @@ function playRound(playerSelection, ComputerSelection) {
     }
   }
   
- 
 
-playRound(playerSelection, ComputerSelection); // Play one round and display the result
+// Make it replayable
+
+function replayRound() {
+    const playerSelection = getPlayerSelection(); 
+    const ComputerSelection = getComputerSelection(); 
+  
+    playRound(playerSelection, ComputerSelection); 
+  
+    const playAgainInput = confirm("Do you want to play again?");
+    
+    if (playAgainInput) {
+      replayRound(); 
+    } else {
+      console.log("Thanks for playing!");
+    }
+  }
+  
+  replayRound();
+  
+
+
 
 
 // Write a game() function that contains the playRound() function to play a best of 5 
 // Keep track of Scores
-
-function game() {
-    // 
 
     // Game 1, Player wins = 1:0
     // Game 2, Player wins = 2:0
@@ -80,4 +89,3 @@ function game() {
     // check which array is larger 
     // larger player array "You won the battle!"
 
-}

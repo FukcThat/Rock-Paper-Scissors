@@ -1,15 +1,38 @@
 // Get user input
 
-let PlayerSelection = prompt("Rock, Paper or Scissors?");
+function getPlayerChoice() {
+    const playerInput = prompt("Enter Rock, Paper, or Scissors:").toLowerCase(); 
 
+    if (playerInput === "rock" || playerInput === "paper" || playerInput === "scissors") {
+      return playerInput; 
+    } else {
+      alert("Invalid Input. Please try again."); 
+      return getPlayerChoice(); 
+    }
+  }
+  
+  const playerPick = getPlayerChoice();
+  console.log("Player chose: " + playerPick);
+  
+  
 
 // Get ComputerInput by random selection of "Rock", "Paper" or "Scissors"
 
 function getComputerSelection() {
-    //make array of possible choises 
-    //get random number between 0 and 2 
-    //pick array slot according to number
-}
+    const randomNum = Math.random(); 
+      
+    if (randomNum < 0.33) {
+      return "Rock"; 
+    } else if (randomNum < 0.66) {
+      return "Paper"; 
+    } else {
+      return "Scissors"; 
+    }
+  }
+      
+  const ComputerSelection = getComputerSelection();
+  console.log("Computer chose: " + ComputerSelection);
+      
 
 // Function that plays one round, return String like "You Lose! Paper beats Rock"
 // Inputs are PlayerSelection and ComputerSelection

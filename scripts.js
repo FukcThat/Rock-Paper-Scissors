@@ -28,27 +28,27 @@ function getComputerSelection() {
   }
       
 
-// Function that plays one round, return String like "You Lose! Paper beats Rock"
+// Function that plays five rounds, keeps track of score and announces winner each round
 
-function playRound(playerSelection, ComputerSelection) {
-    console.log("Player chose: " + playerSelection);
-    console.log("Computer chose: " + ComputerSelection);
-  
-    ComputerSelection = ComputerSelection.toLowerCase(); 
-  
-    if (playerSelection === ComputerSelection) {
-      console.log("It's a tie!");
-    } else if (
-      (playerSelection === "rock" && ComputerSelection === "scissors") ||
-      (playerSelection === "paper" && ComputerSelection === "rock") ||
-      (playerSelection === "scissors" && ComputerSelection === "paper")
-    ) {
-      console.log("You win! " + playerSelection + " beats " + ComputerSelection);
-    } else {
-      console.log("You lose! " + ComputerSelection + " beats " + playerSelection);
+    function playRound(playerSelection, ComputerSelection) {
+        console.log("Player chose: " + playerSelection);
+        console.log("Computer chose: " + ComputerSelection);
+       
+        ComputerSelection = ComputerSelection.toLowerCase(); 
+    
+        if (playerSelection === ComputerSelection) {
+        console.log("It's a tie!");
+        } else if (
+        (playerSelection === "rock" && ComputerSelection === "scissors") ||
+        (playerSelection === "paper" && ComputerSelection === "rock") ||
+        (playerSelection === "scissors" && ComputerSelection === "paper")
+        ) {
+        console.log("You win! " + playerSelection + " beats " + ComputerSelection);
+        } else {
+        console.log("You lose! " + ComputerSelection + " beats " + playerSelection);
+        }
     }
-  }
-  
+
 
 // Make it replayable
 
@@ -70,22 +70,50 @@ function replayRound() {
   replayRound();
   
 
-
-
-
 // Write a game() function that contains the playRound() function to play a best of 5 
 // Keep track of Scores
 
-    // Game 1, Player wins = 1:0
-    // Game 2, Player wins = 2:0
-    // Game 3, Player wins = 3:0 => Computer can't win, Game is over, Player wins same vice versa
-
-    // Game 1, Player wins = 1:0
-    // Game 2, Computer wins = 1:1
-    // Game 3, Player wins = 2:1
-    // Game 4, Computer wins = 2:2
-    // Game 5, Player/Cumputer wins 1:2 / 2:1 => Either player or computer wins
-
-    // check which array is larger 
-    // larger player array "You won the battle!"
-
+function bestOfFive() {
+    let playerScore = 0;
+    let computerScore = 0;
+    let gameOver = false;
+  
+    for (let round = 1; round <= 5 && !gameOver; round++) {
+      console.log(`Round ${round}:`);
+      const playerPick = getPlayerChoice(); // Get player's choice
+      const computerPick = computerChoice(); // Get computer's choice
+  
+      playRound(playerPick, computerPick); // Play one round and display the result
+  
+      if (playerPick === computerPick) {
+        console.log("It's a tie!");
+      } else if (
+        (playerPick === "rock" && computerPick === "scissors") ||
+        (playerPick === "paper" && computerPick === "rock") ||
+        (playerPick === "scissors" && computerPick === "paper")
+      ) {
+        console.log(`You win! ${playerPick} beats ${computerPick}`);
+        playerScore++;
+      } else {
+        console.log(`You lose! ${computerPick} beats ${playerPick}`);
+        computerScore++;
+      }
+  
+      console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
+  
+      if (playerScore >= 3 || computerScore >= 3) {
+        gameOver = true;
+      }
+    }
+  
+    if (playerScore > computerScore) {
+      console.log("Player wins the best of five!");
+    } else if (computerScore > playerScore) {
+      console.log("Computer wins the best of five!");
+    } else {
+      console.log("It's a tie in the best of five!");
+    }
+  }
+  
+  bestOfFive(); 
+  

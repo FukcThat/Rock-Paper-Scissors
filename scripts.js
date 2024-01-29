@@ -73,33 +73,19 @@ function replayRound() {
 // Write a game() function that contains the playRound() function to play a best of 5 
 // Keep track of Scores
 
-function bestOfFive() {
-    let playerScore = 0;
-    let computerScore = 0;
+/* function bestOfFive() {
     let gameOver = false;
+
+    const playerSelection = getPlayerSelection(); 
+    const ComputerSelection = getComputerSelection(); 
   
     for (let round = 1; round <= 5 && !gameOver; round++) {
-      console.log(`Round ${round}:`);
-      const playerPick = getPlayerChoice(); // Get player's choice
-      const computerPick = computerChoice(); // Get computer's choice
+      console.log("Round" + round);
+      
+      playRound(playerSelection, ComputerSelection); // Play one round and display the result
+
   
-      playRound(playerPick, computerPick); // Play one round and display the result
-  
-      if (playerPick === computerPick) {
-        console.log("It's a tie!");
-      } else if (
-        (playerPick === "rock" && computerPick === "scissors") ||
-        (playerPick === "paper" && computerPick === "rock") ||
-        (playerPick === "scissors" && computerPick === "paper")
-      ) {
-        console.log(`You win! ${playerPick} beats ${computerPick}`);
-        playerScore++;
-      } else {
-        console.log(`You lose! ${computerPick} beats ${playerPick}`);
-        computerScore++;
-      }
-  
-      console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
+      console.log("Player Score: " + playerScore + "Computer Score: " + computerScore);
   
       if (playerScore >= 3 || computerScore >= 3) {
         gameOver = true;
@@ -115,5 +101,5 @@ function bestOfFive() {
     }
   }
   
-  bestOfFive(); 
-  
+  bestOfFive(); // Start the best-of-five game
+  */

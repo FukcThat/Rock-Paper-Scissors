@@ -1,3 +1,7 @@
+
+let playerScore = 0;
+let computerScore = 0;
+
 // Get user input
 
 function getPlayerSelection() {
@@ -10,8 +14,6 @@ function getPlayerSelection() {
       return getPlayerSelection(); 
     }
   }
-  
-  
   
 // Get ComputerInput by random selection of "Rock", "Paper" or "Scissors"
 
@@ -43,8 +45,10 @@ function getComputerSelection() {
         (playerSelection === "paper" && ComputerSelection === "rock") ||
         (playerSelection === "scissors" && ComputerSelection === "paper")
         ) {
+            playerScore++;
         console.log("You win! " + playerSelection + " beats " + ComputerSelection);
         } else {
+            computerScore++;
         console.log("You lose! " + ComputerSelection + " beats " + playerSelection);
         }
     }
@@ -67,19 +71,20 @@ function replayRound() {
     }
   }
   
-  replayRound();
+  //replayRound();
   
 
 // Write a game() function that contains the playRound() function to play a best of 5 
 // Keep track of Scores
 
-/* function bestOfFive() {
+
+ function bestOfFive() {
     let gameOver = false;
+
+    for (let round = 1; round <= 5 && !gameOver; round++) {
 
     const playerSelection = getPlayerSelection(); 
     const ComputerSelection = getComputerSelection(); 
-  
-    for (let round = 1; round <= 5 && !gameOver; round++) {
       console.log("Round" + round);
       
       playRound(playerSelection, ComputerSelection); // Play one round and display the result
@@ -102,4 +107,4 @@ function replayRound() {
   }
   
   bestOfFive(); // Start the best-of-five game
-  */
+  

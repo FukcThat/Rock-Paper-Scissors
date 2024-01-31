@@ -71,12 +71,9 @@ function replayRound() {
     }
   }
   
-  //replayRound();
-  
 
 // Write a game() function that contains the playRound() function to play a best of 5 
 // Keep track of Scores
-
 
  function bestOfFive() {
     let gameOver = false;
@@ -87,7 +84,7 @@ function replayRound() {
     const ComputerSelection = getComputerSelection(); 
       console.log("Round" + round);
       
-      playRound(playerSelection, ComputerSelection); // Play one round and display the result
+      playRound(playerSelection, ComputerSelection); 
 
   
       console.log("Player Score: " + playerScore + "Computer Score: " + computerScore);
@@ -106,5 +103,5 @@ function replayRound() {
     }
   }
   
-  bestOfFive(); // Start the best-of-five game
+  bestOfFive();
   

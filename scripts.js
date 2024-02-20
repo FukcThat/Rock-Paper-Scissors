@@ -103,5 +103,20 @@ function replayRound() {
     }
   }
   
-  bestOfFive();
+  // bestOfFive();
   
+// Creating UI
+
+const HomeScreen = document.querySelector("#HomeScreen")
+const ChooseGameScreen = document.querySelector("#ChooseGameScreen")
+
+const PlayBtn = document.querySelector("#PlayBtn")
+
+
+// press Play Btn 
+
+PlayBtn.addEventListener("click", () => ToggleHiddenClass([HomeScreen, ChooseGameScreen]))
+
+function ToggleHiddenClass(screens){
+  screens.forEach(screen => screen.classList.toggle('hidden'))
+}

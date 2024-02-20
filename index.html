@@ -4,12 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock, Paper, Scissors</title>
-    <script src="scripts.js"></script>
+    <script src="scripts.js" defer></script>
     <!-- 
     <a target="_blank" href="https://icons8.com/icon/9FSQ5judlnAN/rock">Rock</a>
     icon by
     <a target="_blank" href="https://icons8.com">Icons8</a> -->
     <link rel="icon" type="image/x-icon" href="icons8-rock-32.png" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body></body>
+  <body>
+    <h1>Rock - Paper - Scissors</h1>
+    <section id="HomeScreen">
+      <p>Rules</p>
+      <button id="PlayBtn">Play</button>
+    </section>
+    <section id="ChooseGameScreen" class="hidden">
+      <button id="SingleRoundBtn">Single Round</button>
+      <button id="BestOf5Btn">Best of 5</button>
+    </section>
+  </body>
 </html>

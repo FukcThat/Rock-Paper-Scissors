@@ -103,20 +103,55 @@ function replayRound() {
     }
   }
   
-  // bestOfFive();
+// bestOfFive();
+
+// ________________________________________________________________________________________________________
+// ________________________________________________________________________________________________________
   
 // Creating UI
 
 const HomeScreen = document.querySelector("#HomeScreen")
 const ChooseGameScreen = document.querySelector("#ChooseGameScreen")
+const CountdownScreen = document.querySelector("#CountdownScreen")
+const GameScreen = document.querySelector("#GameScreen")
 
 const PlayBtn = document.querySelector("#PlayBtn")
 
 
 // press Play Btn 
 
-PlayBtn.addEventListener("click", () => ToggleHiddenClass([HomeScreen, ChooseGameScreen]))
+PlayBtn.addEventListener("click", () => ToggleHiddenClass([HomeScreen, ChooseGameScreen,]))
 
 function ToggleHiddenClass(screens){
   screens.forEach(screen => screen.classList.toggle('hidden'))
 }
+
+// press SingleRoundBtn
+
+SingleRoundBtn.addEventListener("click", () => {
+  ToggleHiddenClass([ChooseGameScreen, CountdownScreen]) 
+  DoCountdown();
+})
+
+function ToggleHiddenClass(screens){ 
+  console.log(screens)
+  screens.forEach(screen => screen.classList.toggle('hidden'))
+}
+
+function DoCountdown() {
+  let count = 3;
+  const CountdownText = document.querySelector("#CountdownText")
+  CountdownText.textContent = count;
+
+  const Interval = setInterval(() => {
+    count--
+    CountdownText.textContent = count;
+    if (count <= 0) {
+      clearInterval(Interval)
+      ToggleHiddenClass([CountdownScreen, GameScreen]) 
+    }
+  }, 1000)
+}
+
+
+

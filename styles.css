@@ -43,4 +43,7 @@ button:active {
     display: none;
 }
 
-
+#CountdownText {
+    font-size: 10rem;
+    color: pink;
+}

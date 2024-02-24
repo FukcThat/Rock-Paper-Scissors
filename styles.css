@@ -8,6 +8,10 @@ body {
     background-color: grey;
 }
 
+div {
+    font-size: 2rem;
+}
+
 h1 {
     position: absolute;
     top: 2rem;

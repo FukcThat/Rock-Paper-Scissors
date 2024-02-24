@@ -8,6 +8,7 @@ const PlayBtn = document.querySelector("#PlayBtn")
 const RockBtn = document.querySelector("#RockBtn")
 const PaperBtn = document.querySelector("#PaperBtn")
 const ScissorsBtn = document.querySelector("#ScissorsBtn")
+const PlayAgainBtn = document.querySelector("#PlayAgainBtn")
 
 
 let playerScore = 0;
@@ -18,6 +19,8 @@ let finalScore = 0;
 // press Play Btn 
 PlayBtn.addEventListener("click", () => ToggleHiddenClass([HomeScreen, ChooseGameScreen,]))
 
+
+//ToggleHiddenClass Function
 function ToggleHiddenClass(screens){
   screens.forEach(screen => screen.classList.toggle('hidden'))
 }
@@ -30,7 +33,6 @@ SingleRoundBtn.addEventListener("click", () => {
 })
 
 function ToggleHiddenClass(screens){ 
-  console.log(screens)
   screens.forEach(screen => screen.classList.toggle('hidden'))
 }
 
@@ -48,6 +50,11 @@ PaperBtn.addEventListener('click', () => {
 // ScissorsBtn EventListener
 ScissorsBtn.addEventListener('click', () => {
   playRound("Scissors", getComputerSelection())
+})
+
+// PlayAgainBtn EventListener
+PlayAgainBtn.addEventListener('click', () => {
+  ToggleHiddenClass([SingleRoundResultScreen, HomeScreen])
 })
 
 
@@ -69,19 +76,20 @@ function DoCountdown() {
 
 
 // Get user input
-function getPlayerSelection() {
-    const playerInput = prompt("Enter Rock, Paper, or Scissors:").toLowerCase(); 
+// function getPlayerSelection() {
+//     const playerInput = prompt("Enter Rock, Paper, or Scissors:").toLowerCase(); 
 
-    if (playerInput === "rock" || playerInput === "paper" || playerInput === "scissors") {
-      return playerInput; 
-    } else {
-      alert("Invalid Input. Please try again."); 
-      return getPlayerSelection(); 
-    }
-  }
+//     if (playerInput === "rock" || playerInput === "paper" || playerInput === "scissors") {
+//       return playerInput; 
+//     } else {
+//       alert("Invalid Input. Please try again."); 
+//       return getPlayerSelection(); 
+//     }
+//   }
   
 
 // Get ComputerInput by random selection of "Rock", "Paper" or "Scissors"
+
 function getComputerSelection() {
     const randomNum = Math.random(); 
       
@@ -93,6 +101,20 @@ function getComputerSelection() {
       return "Scissors"; 
     }
   }
+
+
+// UpdateResult Function -> Updates result to be displayed in ResultScreens
+function UpdateXBeatsYText(result) {
+  const XBeatsYText = document.querySelector("#XBeatsYText");
+  XBeatsYText.textContent = result;
+}
+
+
+//UpdateWinner Function -> Declares Winner
+function UpdateWinnerText(winner) {
+  const WinnerText = document.querySelector("#WinnerText")
+  WinnerText.textContent = winner;
+}
       
 
 // Function that plays five rounds, keeps track of score and announces winner each round
@@ -100,29 +122,31 @@ function playRound(playerSelection, ComputerSelection) {
     console.log("Player chose: " + playerSelection);
     console.log("Computer chose: " + ComputerSelection);
     
-    ComputerSelection = ComputerSelection.toLowerCase(); 
-    playerSelection = playerSelection.toLowerCase();
-
     ToggleHiddenClass([GameScreen, SingleRoundResultScreen])
 
     if (playerSelection === ComputerSelection) {
-    console.log("It's a tie!");
+    const result = "It's a tie!";
+    UpdateXBeatsYText(result);
     } else if (
-    (playerSelection === "rock" && ComputerSelection === "scissors") ||
-    (playerSelection === "paper" && ComputerSelection === "rock") ||
-    (playerSelection === "scissors" && ComputerSelection === "paper")
+    (playerSelection === "Rock" && ComputerSelection === "Scissors") ||
+    (playerSelection === "Paper" && ComputerSelection === "Rock") ||
+    (playerSelection === "Scissors" && ComputerSelection === "Paper")
     ) {
-        playerScore++;
-    console.log("You win! " + playerSelection + " beats " + ComputerSelection);
+      playerScore++;
+      const result = playerSelection + " beats " + ComputerSelection + "!";
+      UpdateXBeatsYText(result);
     } else {
-        computerScore++;
-    console.log("You lose! " + ComputerSelection + " beats " + playerSelection);
+      computerScore++;
+      const result = ComputerSelection + " beats " + playerSelection + "!";
+      UpdateXBeatsYText(result);
     }
     if (playerScore >= finalScore) {
-      console.log("You win!")
+      const winner = "You win!";
+      UpdateWinnerText(winner);
     } 
     if (computerScore >= finalScore) {
-      console.log("Computer wins!")
+      const winner = "Computer wins!";
+      UpdateWinnerText(winner);
     }
 }
 

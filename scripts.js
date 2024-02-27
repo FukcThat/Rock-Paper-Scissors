@@ -1,180 +1,169 @@
-const HomeScreen = document.querySelector("#HomeScreen")
-const ChooseGameScreen = document.querySelector("#ChooseGameScreen")
-const CountdownScreen = document.querySelector("#CountdownScreen")
-const GameScreen = document.querySelector("#GameScreen")
-const SingleRoundResultScreen = document.querySelector("#SingleRoundResultScreen")
+const HomeScreen = document.querySelector("#HomeScreen");
+const ChooseGameScreen = document.querySelector("#ChooseGameScreen");
+const CountdownScreen = document.querySelector("#CountdownScreen");
+const GameScreen = document.querySelector("#GameScreen");
+const ResultScreen = document.querySelector("#ResultScreen");
 
-const PlayBtn = document.querySelector("#PlayBtn")
-const RockBtn = document.querySelector("#RockBtn")
-const PaperBtn = document.querySelector("#PaperBtn")
-const ScissorsBtn = document.querySelector("#ScissorsBtn")
-const PlayAgainBtn = document.querySelector("#PlayAgainBtn")
-
+const PlayBtn = document.querySelector("#PlayBtn");
+const RockBtn = document.querySelector("#RockBtn");
+const PaperBtn = document.querySelector("#PaperBtn");
+const ScissorsBtn = document.querySelector("#ScissorsBtn");
+const PlayAgainBtn = document.querySelector("#PlayAgainBtn");
 
 let playerScore = 0;
 let computerScore = 0;
 let finalScore = 0;
-
-
-// press Play Btn 
-PlayBtn.addEventListener("click", () => ToggleHiddenClass([HomeScreen, ChooseGameScreen,]))
-
+let countdownTimeInSeconds = 3;
 
 //ToggleHiddenClass Function
-function ToggleHiddenClass(screens){
-  screens.forEach(screen => screen.classList.toggle('hidden'))
+function ToggleHiddenClass(screens) {
+  screens.forEach((screen) => screen.classList.toggle("hidden"));
 }
+
+// press Play Btn
+PlayBtn.addEventListener("click", () =>
+  ToggleHiddenClass([HomeScreen, ChooseGameScreen])
+);
 
 // press SingleRoundBtn
 SingleRoundBtn.addEventListener("click", () => {
-  ToggleHiddenClass([ChooseGameScreen, CountdownScreen]) 
+  ToggleHiddenClass([ChooseGameScreen, CountdownScreen]);
   DoCountdown();
   finalScore = 1;
-})
+});
 
-function ToggleHiddenClass(screens){ 
-  screens.forEach(screen => screen.classList.toggle('hidden'))
-}
+// BestOf5Btn
+BestOf5Btn.addEventListener("click", () => {
+  ToggleHiddenClass([ChooseGameScreen, CountdownScreen]);
+  DoCountdown();
+  finalScore = 3;
+});
 
+//NextRoundBtn
+NextRoundBtn.addEventListener("click", () => {
+  ToggleHiddenClass([RoundResultScreen, CountdownScreen]);
+  DoCountdown();
+});
 
 // RockBtn EventListener
-RockBtn.addEventListener('click', () => {
-  playRound("Rock", getComputerSelection())
-})
+RockBtn.addEventListener("click", () => {
+  playRound("Rock", getComputerSelection());
+});
 
 // PaperBtn EventListener
-PaperBtn.addEventListener('click', () => {
-  playRound("Paper", getComputerSelection())
-})
+PaperBtn.addEventListener("click", () => {
+  playRound("Paper", getComputerSelection());
+});
 
 // ScissorsBtn EventListener
-ScissorsBtn.addEventListener('click', () => {
-  playRound("Scissors", getComputerSelection())
-})
+ScissorsBtn.addEventListener("click", () => {
+  playRound("Scissors", getComputerSelection());
+});
 
 // PlayAgainBtn EventListener
-PlayAgainBtn.addEventListener('click', () => {
-  ToggleHiddenClass([SingleRoundResultScreen, HomeScreen])
-})
-
+PlayAgainBtn.addEventListener("click", () => {
+  playerScore = 0;
+  computerScore = 0;
+  countdownTimeInSeconds = 3;
+  ToggleHiddenClass([ResultScreen, HomeScreen]);
+});
 
 //Countdown Function
 function DoCountdown() {
-  let count = 3;
-  const CountdownText = document.querySelector("#CountdownText")
-  CountdownText.textContent = count;
+  const CountdownText = document.querySelector("#CountdownText");
+  CountdownText.textContent = countdownTimeInSeconds;
 
   const Interval = setInterval(() => {
-    count--
-    CountdownText.textContent = count;
-    if (count <= 0) {
-      clearInterval(Interval)
-      ToggleHiddenClass([CountdownScreen, GameScreen]) 
+    countdownTimeInSeconds--;
+    CountdownText.textContent = countdownTimeInSeconds;
+    if (countdownTimeInSeconds <= 0) {
+      clearInterval(Interval);
+      ToggleHiddenClass([CountdownScreen, GameScreen]);
     }
-  }, 1000)
+  }, 1000);
 }
-
-
-// Get user input
-// function getPlayerSelection() {
-//     const playerInput = prompt("Enter Rock, Paper, or Scissors:").toLowerCase(); 
-
-//     if (playerInput === "rock" || playerInput === "paper" || playerInput === "scissors") {
-//       return playerInput; 
-//     } else {
-//       alert("Invalid Input. Please try again."); 
-//       return getPlayerSelection(); 
-//     }
-//   }
-  
 
 // Get ComputerInput by random selection of "Rock", "Paper" or "Scissors"
-
 function getComputerSelection() {
-    const randomNum = Math.random(); 
-      
-    if (randomNum < 0.33) {
-      return "Rock"; 
-    } else if (randomNum < 0.66) {
-      return "Paper"; 
-    } else {
-      return "Scissors"; 
-    }
+  const randomNum = Math.random();
+
+  if (randomNum < 0.33) {
+    return "Rock";
+  } else if (randomNum < 0.66) {
+    return "Paper";
+  } else {
+    return "Scissors";
   }
-
-
-// UpdateResult Function -> Updates result to be displayed in ResultScreens
-function UpdateXBeatsYText(result) {
-  const XBeatsYText = document.querySelector("#XBeatsYText");
-  XBeatsYText.textContent = result;
 }
 
-
-//UpdateWinner Function -> Declares Winner
-function UpdateWinnerText(winner) {
-  const WinnerText = document.querySelector("#WinnerText")
-  WinnerText.textContent = winner;
-}
-      
-
-// Function that plays five rounds, keeps track of score and announces winner each round
-function playRound(playerSelection, ComputerSelection) {
-    console.log("Player chose: " + playerSelection);
-    console.log("Computer chose: " + ComputerSelection);
-    
-    ToggleHiddenClass([GameScreen, SingleRoundResultScreen])
-
-    if (playerSelection === ComputerSelection) {
-    const result = "It's a tie!";
-    UpdateXBeatsYText(result);
-    } else if (
+function PlayerWins(playerSelection, ComputerSelection) {
+  return (
     (playerSelection === "Rock" && ComputerSelection === "Scissors") ||
     (playerSelection === "Paper" && ComputerSelection === "Rock") ||
     (playerSelection === "Scissors" && ComputerSelection === "Paper")
-    ) {
-      playerScore++;
-      const result = playerSelection + " beats " + ComputerSelection + "!";
-      UpdateXBeatsYText(result);
-    } else {
-      computerScore++;
-      const result = ComputerSelection + " beats " + playerSelection + "!";
-      UpdateXBeatsYText(result);
-    }
-    if (playerScore >= finalScore) {
-      const winner = "You win!";
-      UpdateWinnerText(winner);
-    } 
-    if (computerScore >= finalScore) {
-      const winner = "Computer wins!";
-      UpdateWinnerText(winner);
-    }
+  );
 }
 
+// Function that plays five rounds, keeps track of score and announces winner each round
+function playRound(playerSelection, ComputerSelection) {
+  let result;
+  if (playerSelection === ComputerSelection) {
+    result = "It's a tie!";
+  } else if (PlayerWins(playerSelection, ComputerSelection)) {
+    playerScore++;
+    result = playerSelection + " beats " + ComputerSelection + "!";
+  } else {
+    computerScore++;
+    result = ComputerSelection + " beats " + playerSelection + "!";
+  }
 
+  XBeatsYText.textContent = result;
+  ResultText.textContent = result;
 
+  if (playerScore >= finalScore) {
+    WinnerText.textContent = "You win!";
+    ToggleHiddenClass([GameScreen, ResultScreen]);
+    return;
+  }
 
+  if (computerScore >= finalScore) {
+    WinnerText.textContent = "Computer wins!";
+    ToggleHiddenClass([GameScreen, ResultScreen]);
+    return;
+  }
+
+  if (finalScore == 1) {
+    // If game is best of one at this point and no player has beaten the final score its a tie
+    WinnerText.textContent = "Computer wins!";
+    ToggleHiddenClass([GameScreen, ResultScreen]);
+  } else {
+    // Else its a BO5 and it should keep going
+    ScoreText.textContent =
+      "Player: " + playerScore + "/ Computer: " + computerScore;
+    ToggleHiddenClass([GameScreen, RoundResultScreen]);
+  }
+}
 
 // ______________________________________________________________________________________________
 // ______________________________________________________________________________________________
 
 // Make it replayable
 // function replayRound() {
-//     const playerSelection = getPlayerSelection(); 
-//     const ComputerSelection = getComputerSelection(); 
-  
-//     playRound(playerSelection, ComputerSelection); 
-  
+//     const playerSelection = getPlayerSelection();
+//     const ComputerSelection = getComputerSelection();
+
+//     playRound(playerSelection, ComputerSelection);
+
 //     const playAgainInput = confirm("Do you want to play again?");
-    
+
 //     if (playAgainInput) {
-//       replayRound(); 
+//       replayRound();
 //     } else {
 //       console.log("Thanks for playing!");
 //     }
 //   }
-  
 
-// Write a game() function that contains the playRound() function to play a best of 5 
+// Write a game() function that contains the playRound() function to play a best of 5
 // Keep track of Scores
 
 //  function bestOfFive() {
@@ -182,20 +171,19 @@ function playRound(playerSelection, ComputerSelection) {
 
 //     for (let round = 1; round <= 5 && !gameOver; round++) {
 
-//     const playerSelection = getPlayerSelection(); 
-//     const ComputerSelection = getComputerSelection(); 
+//     const playerSelection = getPlayerSelection();
+//     const ComputerSelection = getComputerSelection();
 //       console.log("Round" + round);
-      
-//       playRound(playerSelection, ComputerSelection); 
 
-  
+//       playRound(playerSelection, ComputerSelection);
+
 //       console.log("Player Score: " + playerScore + "Computer Score: " + computerScore);
-  
+
 //       if (playerScore >= 3 || computerScore >= 3) {
 //         gameOver = true;
 //       }
 //     }
-  
+
 //     if (playerScore > computerScore) {
 //       console.log("Player wins the best of five!");
 //     } else if (computerScore > playerScore) {

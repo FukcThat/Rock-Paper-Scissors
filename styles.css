@@ -42,15 +42,21 @@ button {
     padding: 1rem 4rem;
     border: 0;
     border-radius: 5rem;
-    box-shadow: 2.5px 2.5px 2.5px darkgoldenrod;
-    transition: all 0.25s ease-in-out;
+    box-shadow: 0.25rem 0.25rem 0.25rem darkgoldenrod;
+    transition: all 0.1s ease-in-out;
     cursor: pointer;
     font-family: Patrick Hand SC;
     font-size: 2rem;
 }
 
+button:hover {
+    background-color: rgb(239, 207, 24);
+    color: white;
+}
+
 button:active {
-    box-shadow: 0px 0px 0px darkgoldenrod;
+    transform: translate(0.25rem, 0.25rem);
+    box-shadow: 0rem 0rem 0rem darkgoldenrod;
 }
 
 .patrick-hand sc-regular {

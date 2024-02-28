@@ -107,6 +107,7 @@ function PlayerWins(playerSelection, ComputerSelection) {
 // Function that plays five rounds, keeps track of score and announces winner each round
 function playRound(playerSelection, ComputerSelection) {
   let result;
+
   if (playerSelection === ComputerSelection) {
     result = "It's a tie!";
   } else if (PlayerWins(playerSelection, ComputerSelection)) {
@@ -132,63 +133,17 @@ function playRound(playerSelection, ComputerSelection) {
     return;
   }
 
+  // If the function gets to here without returning, neither player has won yet
+
   if (finalScore == 1) {
     // If game is best of one at this point and no player has beaten the final score its a tie
-    WinnerText.textContent = "Computer wins!";
+    WinnerText.textContent = "Game is a tie!";
     ToggleHiddenClass([GameScreen, ResultScreen]);
-  } else {
-    // Else its a BO5 and it should keep going
-    ScoreText.textContent =
-      "Player: " + playerScore + "/ Computer: " + computerScore;
-    ToggleHiddenClass([GameScreen, RoundResultScreen]);
+    return;
   }
+  // If the function gets to here, then its a Best of Five and neither player has won the game yet
+
+  ScoreText.textContent =
+    "Player: " + playerScore + "/ Computer: " + computerScore;
+  ToggleHiddenClass([GameScreen, RoundResultScreen]);
 }
-
-// ______________________________________________________________________________________________
-// ______________________________________________________________________________________________
-
-// Make it replayable
-// function replayRound() {
-//     const playerSelection = getPlayerSelection();
-//     const ComputerSelection = getComputerSelection();
-
-//     playRound(playerSelection, ComputerSelection);
-
-//     const playAgainInput = confirm("Do you want to play again?");
-
-//     if (playAgainInput) {
-//       replayRound();
-//     } else {
-//       console.log("Thanks for playing!");
-//     }
-//   }
-
-// Write a game() function that contains the playRound() function to play a best of 5
-// Keep track of Scores
-
-//  function bestOfFive() {
-//     let gameOver = false;
-
-//     for (let round = 1; round <= 5 && !gameOver; round++) {
-
-//     const playerSelection = getPlayerSelection();
-//     const ComputerSelection = getComputerSelection();
-//       console.log("Round" + round);
-
-//       playRound(playerSelection, ComputerSelection);
-
-//       console.log("Player Score: " + playerScore + "Computer Score: " + computerScore);
-
-//       if (playerScore >= 3 || computerScore >= 3) {
-//         gameOver = true;
-//       }
-//     }
-
-//     if (playerScore > computerScore) {
-//       console.log("Player wins the best of five!");
-//     } else if (computerScore > playerScore) {
-//       console.log("Computer wins the best of five!");
-//     } else {
-//       console.log("It's a tie in the best of five!");
-//     }
-//   }

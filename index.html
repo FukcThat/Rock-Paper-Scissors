@@ -23,17 +23,17 @@
     <section id="HomeScreen">
       <h2>Rules</h2>
       <ul id="Rules">
-        <li class="RuleHeader">Rock crushes scissors</li>
+        <li class="RuleHeader"><b>Rock crushes scissors</b></li>
         <li>
           If you choose rock and your opponent chooses scissors, rock wins
           because it can crush scissors
         </li>
-        <li class="RuleHeader">Scissors cuts paper</li>
+        <li class="RuleHeader"><b>Scissors cuts paper</b></li>
         <li>
           If you choose scissors and your opponent chooses paper, scissors win
           by cutting the paper
         </li>
-        <li class="RuleHeader">Paper covers rock</li>
+        <li class="RuleHeader"><b>Paper covers rock</b></li>
         <li>
           If you choose paper and your opponent chooses rock, paper wins by
           covering the rock
@@ -42,26 +42,31 @@
       <button id="PlayBtn">Play</button>
     </section>
     <section id="ChooseGameScreen" class="hidden">
-      <div>
-        Singe Round: You play exactly one Round. If it's a tie, there is no
-        winner but the game is over.
-      </div>
-      <button id="SingleRoundBtn">Single Round</button>
-      <div>
-        Best of 5: You play until either Player reaches 3 wins. If you win one
-        round you get one Point. If it's a tie, neither player gets a point.
+      <button id="SingleRoundBtn">
+        <b>Singe Round</b> <br />
+        You play exactly one Round. If it's a tie, there is no winner but the
+        game is over.
+      </button>
+      <button id="BestOf5Btn">
+        <b>Best of 5</b> <br />
+        You play until either Player reaches 3 wins. <br />
+        If you win one round you get one Point. If it's a tie, neither player
+        gets a point. <br />
         Ties don't count into the 5 rounds so don't be surprised if the game
         lasts longer than 5 rounds.
-      </div>
-      <button id="BestOf5Btn">Best of 5</button>
+      </button>
     </section>
     <section id="CountdownScreen" class="hidden">
       <div id="CountdownText">CountdownScreen</div>
     </section>
     <section id="GameScreen" class="hidden">
-      <button id="RockBtn">Rock</button>
-      <button id="PaperBtn">Paper</button>
-      <button id="ScissorsBtn">Scissors</button>
+      <ul>
+        <li><button id="RockBtn" class="GameBtns">Rock</button></li>
+        <li>
+          <button id="PaperBtn" class="GameBtns">Paper</button>
+          <button id="ScissorsBtn" class="GameBtns">Scissors</button>
+        </li>
+      </ul>
     </section>
     <section id="ResultScreen" class="hidden">
       <div id="XBeatsYText"></div>

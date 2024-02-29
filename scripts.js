@@ -42,6 +42,7 @@ BestOf5Btn.addEventListener("click", () => {
 //NextRoundBtn
 NextRoundBtn.addEventListener("click", () => {
   ToggleHiddenClass([RoundResultScreen, CountdownScreen]);
+  countdownTimeInSeconds = 3;
   DoCountdown();
 });
 

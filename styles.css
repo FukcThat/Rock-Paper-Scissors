@@ -104,7 +104,7 @@ button:active {
 }
 
 #CountdownText {
-    font-size: 10rem;
+    font-size: 15rem;
     color: darkgoldenrod;
 }
 
@@ -116,13 +116,4 @@ li {
     margin-bottom: 1rem;
     padding: 0.5rem 1rem;
 }
-
-#SingleRoundBtn {
-    height: 15rem;
-}
-
-#BestOf5Btn {
-    height: 15rem;
-}
-
 

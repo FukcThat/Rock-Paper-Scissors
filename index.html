@@ -70,12 +70,25 @@
     </section>
     <section id="ResultScreen" class="hidden">
       <div id="RoundText"></div>
-      <div id="ScoreText"></div>
-      <div id="PlayerChoiceText"></div>
-      <div id="ComputerChoiceText"></div>
-      <div id="XBeatsYText"></div>
-      <div id="RoundWinnerText"></div>
-      <div id="GameWinnerText"></div>
+      <div id="Scores">
+        <div id="PlayerScr">
+          <p>Your Score</p>
+          <div id="PlayerScoreText"></div>
+        </div>
+        <div id="CompScr">
+          <p>Computer Score</p>
+          <div id="ComputerScoreText"></div>
+        </div>
+      </div>
+      <div id="Choices">
+        <div id="PlayerChoiceText"></div>
+        <div id="ComputerChoiceText"></div>
+      </div>
+      <div id="Outcome">
+        <div id="XBeatsYText"></div>
+        <div id="RoundWinnerText"></div>
+        <div id="GameWinnerText"></div>
+      </div>
       <button id="NextRoundBtn">Next Round</button>
       <button id="PlayAgainBtn">Play again</button>
     </section>

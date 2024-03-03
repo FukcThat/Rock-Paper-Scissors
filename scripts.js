@@ -9,7 +9,6 @@ const RockBtn = document.querySelector("#RockBtn");
 const PaperBtn = document.querySelector("#PaperBtn");
 const ScissorsBtn = document.querySelector("#ScissorsBtn");
 const NextRoundBtn = document.querySelector("#NextRoundBtn");
-console.log(NextRoundBtn);
 const PlayAgainBtn = document.querySelector("#PlayAgainBtn");
 
 let playerScore = 0;
@@ -110,7 +109,10 @@ function PlayerWins(playerSelection, ComputerSelection) {
 
 function SingleRoundResults() {
   RoundText.classList.add("hidden");
-  ScoreText.classList.add("hidden");
+  PlayerScoreText.classList.remove("hidden");
+  console.log(PlayerScoreText);
+  ComputerScoreText.classList.remove("hidden");
+  console.log(ComputerScoreText);
   PlayerChoiceText.classList.remove("hidden");
   ComputerChoiceText.classList.remove("hidden");
   XBeatsYText.classList.remove("hidden");
@@ -122,7 +124,8 @@ function SingleRoundResults() {
 
 function Bestof1to4() {
   RoundText.classList.remove("hidden");
-  ScoreText.classList.remove("hidden");
+  PlayerScoreText.classList.remove("hidden");
+  ComputerScoreText.classList.remove("hidden");
   PlayerChoiceText.classList.remove("hidden");
   ComputerChoiceText.classList.remove("hidden");
   XBeatsYText.classList.remove("hidden");
@@ -134,7 +137,8 @@ function Bestof1to4() {
 
 function FinalResult() {
   RoundText.classList.remove("hidden");
-  ScoreText.classList.remove("hidden");
+  PlayerScoreText.classList.remove("hidden");
+  ComputerScoreText.classList.remove("hidden");
   PlayerChoiceText.classList.remove("hidden");
   ComputerChoiceText.classList.remove("hidden");
   XBeatsYText.classList.remove("hidden");
@@ -149,8 +153,8 @@ function RoundWinHelper(WinnerText, GameWText) {
   ToggleHiddenClass([GameScreen, ResultScreen]);
   GameWinnerText.textContent = GameWText;
   finalScore == 3 && FinalResult();
-  ScoreText.textContent =
-    "Player: " + playerScore + "/ Computer: " + computerScore;
+  PlayerScoreText.textContent = playerScore;
+  ComputerScoreText.textContent = computerScore;
 }
 
 // Function that plays five rounds, keeps track of score and announces winner each round
@@ -160,8 +164,8 @@ function playRound(playerSelection, ComputerSelection) {
   roundCount++;
   RoundText.textContent = "Round " + roundCount;
 
-  PlayerChoiceText.textContent = playerSelection;
-  ComputerChoiceText.textContent = ComputerSelection;
+  PlayerChoiceText.textContent = "You picked " + playerSelection;
+  ComputerChoiceText.textContent = "Computer picked " + ComputerSelection;
 
   if (playerSelection === ComputerSelection) {
     result = "It's a tie!";
@@ -198,7 +202,8 @@ function playRound(playerSelection, ComputerSelection) {
   // If the function gets to here, then its a Best of Five and neither player has won the game yet
   Bestof1to4();
 
-  ScoreText.textContent =
-    "Player: " + playerScore + "/ Computer: " + computerScore;
+  PlayerScoreText.textContent = playerScore;
+  ComputerScoreText.textContent = computerScore;
+
   ToggleHiddenClass([GameScreen, ResultScreen]);
 }

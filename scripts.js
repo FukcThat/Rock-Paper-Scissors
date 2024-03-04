@@ -22,10 +22,17 @@ function ToggleHiddenClass(screens) {
   screens.forEach((screen) => screen.classList.toggle("hidden"));
 }
 
+//HomeBtn
+HomeBtn.addEventListener("click", () => {
+  ChooseGameScreen.classList.add("hidden");
+  ResultScreen.classList.add("hidden");
+  HomeScreen.classList.remove("hidden");
+});
+
 // press Play Btn
-PlayBtn.addEventListener("click", () =>
-  ToggleHiddenClass([HomeScreen, ChooseGameScreen])
-);
+PlayBtn.addEventListener("click", () => {
+  ToggleHiddenClass([HomeScreen, ChooseGameScreen]);
+});
 
 // press SingleRoundBtn
 SingleRoundBtn.addEventListener("click", () => {

@@ -19,21 +19,23 @@ ul {
     text-align: center;
 }
 
-h1 {
+#HomeBtn {
     position: absolute;
     top: 2rem;
     width: 100vw;
     text-align: center;
     font-size: 4rem;
     font-family: Rock Salt;
+    background-color: rgb(199, 169, 86);
+    box-shadow: none;
 }
 @media (max-width: 800px) {
-    h1 {
+    #HomeBtn {
         font-size: 3rem;
     }
 }
 @media (max-width: 550px) {
-    h1 {
+    #HomeBtn {
         font-size: 2rem;
     }
 }

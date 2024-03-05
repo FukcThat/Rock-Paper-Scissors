@@ -24,10 +24,22 @@ function ToggleHiddenClass(screens) {
 
 //HomeBtn
 HomeBtn.addEventListener("click", () => {
-  ChooseGameScreen.classList.add("hidden");
-  ResultScreen.classList.add("hidden");
-  HomeScreen.classList.remove("hidden");
+  IgnoreHome();
+  console.log(HomeScreen);
+  console.log(HomeBtn);
 });
+
+//HomeBtn Countdown Helper
+function IgnoreHome() {
+  if (!CountdownScreen.classList.contains("hidden")) {
+    HomeScreen.classList.add("hidden");
+  } else {
+    ChooseGameScreen.classList.add("hidden");
+    ResultScreen.classList.add("hidden");
+    HomeScreen.classList.remove("hidden");
+  }
+  console.log(IgnoreHome);
+}
 
 // press Play Btn
 PlayBtn.addEventListener("click", () => {

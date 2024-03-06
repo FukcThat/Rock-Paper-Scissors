@@ -87,6 +87,15 @@ button:active {
 
 #RockBtn {
     margin-top: 10rem;
+    cursor: url('RockCursor.png'), auto;
+}
+
+#PaperBtn {
+    cursor: url('PaperCursor.png'), auto;
+}
+
+#ScissorsBtn {
+    cursor: url('ScissorsCursor.png'), auto;
 }
 
 .patrick-hand sc-regular {

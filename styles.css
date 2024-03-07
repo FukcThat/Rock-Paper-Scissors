@@ -132,7 +132,7 @@ li {
     font-size: 5rem;
 }
 
-#Scores {
+#Scores > .hidden {
     display: flex;
     flex-direction: row;
     justify-content: center;

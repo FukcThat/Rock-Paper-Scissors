@@ -11,6 +11,9 @@ const ScissorsBtn = document.querySelector("#ScissorsBtn");
 const NextRoundBtn = document.querySelector("#NextRoundBtn");
 const PlayAgainBtn = document.querySelector("#PlayAgainBtn");
 
+let PlayerScoreText = document.querySelector("#PlayerScoreText");
+let ComputerScoreText = document.querySelector("#ComputerScoreText");
+
 let playerScore = 0;
 let computerScore = 0;
 let finalScore = 0;
@@ -128,10 +131,7 @@ function PlayerWins(playerSelection, ComputerSelection) {
 
 function SingleRoundResults() {
   RoundText.classList.add("hidden");
-  PlayerScoreText.classList.remove("hidden");
-  console.log(PlayerScoreText);
-  ComputerScoreText.classList.remove("hidden");
-  console.log(ComputerScoreText);
+  Scores.classList.add("hidden");
   PlayerChoiceText.classList.remove("hidden");
   ComputerChoiceText.classList.remove("hidden");
   XBeatsYText.classList.remove("hidden");
@@ -143,8 +143,7 @@ function SingleRoundResults() {
 
 function Bestof1to4() {
   RoundText.classList.remove("hidden");
-  PlayerScoreText.classList.remove("hidden");
-  ComputerScoreText.classList.remove("hidden");
+  Scores.classList.remove("hidden");
   PlayerChoiceText.classList.remove("hidden");
   ComputerChoiceText.classList.remove("hidden");
   XBeatsYText.classList.remove("hidden");
@@ -156,8 +155,7 @@ function Bestof1to4() {
 
 function FinalResult() {
   RoundText.classList.remove("hidden");
-  PlayerScoreText.classList.remove("hidden");
-  ComputerScoreText.classList.remove("hidden");
+  Scores.classList.remove("hidden");
   PlayerChoiceText.classList.remove("hidden");
   ComputerChoiceText.classList.remove("hidden");
   XBeatsYText.classList.remove("hidden");

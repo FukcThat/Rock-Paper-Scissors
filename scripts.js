@@ -13,6 +13,7 @@ const PlayAgainBtn = document.querySelector("#PlayAgainBtn");
 
 let PlayerScoreText = document.querySelector("#PlayerScoreText");
 let ComputerScoreText = document.querySelector("#ComputerScoreText");
+let GameWinnerText = document.querySelector("#GameWinnerText");
 
 let playerScore = 0;
 let computerScore = 0;
@@ -132,11 +133,13 @@ function PlayerWins(playerSelection, ComputerSelection) {
 function SingleRoundResults() {
   RoundText.classList.add("hidden");
   Scores.classList.add("hidden");
+  Scores.classList.remove("flex");
   PlayerChoiceText.classList.remove("hidden");
   ComputerChoiceText.classList.remove("hidden");
   XBeatsYText.classList.remove("hidden");
   RoundWinnerText.classList.remove("hidden");
   GameWinnerText.classList.add("hidden");
+  Outcome.classList.remove("flex");
   NextRoundBtn.classList.add("hidden");
   PlayAgainBtn.classList.remove("hidden");
 }
@@ -144,6 +147,7 @@ function SingleRoundResults() {
 function Bestof1to4() {
   RoundText.classList.remove("hidden");
   Scores.classList.remove("hidden");
+  Scores.classList.add("flex");
   PlayerChoiceText.classList.remove("hidden");
   ComputerChoiceText.classList.remove("hidden");
   XBeatsYText.classList.remove("hidden");
@@ -156,6 +160,7 @@ function Bestof1to4() {
 function FinalResult() {
   RoundText.classList.remove("hidden");
   Scores.classList.remove("hidden");
+  Scores.classList.add("flex");
   PlayerChoiceText.classList.remove("hidden");
   ComputerChoiceText.classList.remove("hidden");
   XBeatsYText.classList.remove("hidden");

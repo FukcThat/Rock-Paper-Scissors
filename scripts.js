@@ -115,7 +115,7 @@ function getComputerSelection() {
 
   if (randomNum < 0.33) {
     return "Rock";
-  } else if (randomNum < 0.66) {
+  } else if (randomNum > 0.66) {
     return "Paper";
   } else {
     return "Scissors";
@@ -153,6 +153,7 @@ function Bestof1to4() {
   XBeatsYText.classList.remove("hidden");
   RoundWinnerText.classList.remove("hidden");
   GameWinnerText.classList.add("hidden");
+  Outcome.classList.add("flex");
   NextRoundBtn.classList.remove("hidden");
   PlayAgainBtn.classList.add("hidden");
 }

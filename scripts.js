@@ -139,7 +139,7 @@ function SingleRoundResults() {
   XBeatsYText.classList.remove("hidden");
   RoundWinnerText.classList.remove("hidden");
   GameWinnerText.classList.add("hidden");
-  Outcome.classList.remove("flex");
+  Outcome.classList.add("flex");
   NextRoundBtn.classList.add("hidden");
   PlayAgainBtn.classList.remove("hidden");
 }

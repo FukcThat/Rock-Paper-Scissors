@@ -10,9 +10,6 @@ body {
     font-size: 2rem;
 }
 
-div {
-    font-size: 2rem;
-}
 
 ul {
     list-style-type: none;
@@ -160,7 +157,7 @@ li {
     align-items: center;
 }
 
-#Outcome > div{
+#Outcome {
     flex-direction: column;
     justify-content: center;
     align-items: center;
